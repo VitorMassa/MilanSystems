@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import { DivSideBar, DivSideTitle } from "./styles";
+import { DivSideBar, DivSideTitle, DivSidePages } from "./styles";
+import { SideBarData } from "./SideBarData";
 
 export default function SideBar({ active }) {
   function closeSideBar() {
@@ -9,17 +10,27 @@ export default function SideBar({ active }) {
 
   return (
     <DivSideBar>
-      <DivSideTitle className="grid grid-cols-6">
+      <DivSideTitle>
         <FaTimes onClick={closeSideBar} />
-        <p className="text-left leading-3 col-start-3 col-end-6 font-bold hover:text-green-200">
+        <p className="col-start-3 col-end-6 ">
           Milan
           <br />
           Systems
         </p>
       </DivSideTitle>
-
       <div>
-        <p>TESTE</p>
+        {SideBarData?.map((value, key) => {
+          return (
+            <div>
+              <DivSidePages>
+                <p>{value.title}</p>
+              </DivSidePages>
+              {value.subPages?.map((subpage, key) => {
+                return <p>{subpage.title}</p>;
+              })}
+            </div>
+          );
+        })}
       </div>
     </DivSideBar>
   );

@@ -9,12 +9,16 @@ export const DivSideBar = styled.div`
   width: 15%;
 `;
 
-export const DivSideTitle = styled.div`
+export const DivSideTitle = styled.div.attrs({
+  className:
+    "grid grid-cols-6 items-center text-left leading-3 font-bold h-14 hover:text-green-200",
+})`
   background-color: rgba(128, 127, 187, 1);
-  height: 7%;
   padding-left: 7%;
-  /* display: flex; */
-  /* flex-direction: row; */
-  align-items: center;
-  /* justify-content: flex-start; */
+`;
+
+export const DivSidePages = styled.div.attrs({
+  className: "h-14",
+})`
+  background-color: rgba(180, 180, 216, 1);
 `;
