@@ -6,8 +6,8 @@ export const SideBarData = [
     path: "",
     subPages: [
       {
-        title: "Contas a Pagar",
-        path: "/",
+        title: "Registrar Conta",
+        path: "/registro",
       },
       {
         title: "Contas a Receber",
@@ -17,7 +17,7 @@ export const SideBarData = [
   },
   {
     title: "Relatórios",
-    path: "/",
+    path: "",
     subPages: [],
   },
 ];

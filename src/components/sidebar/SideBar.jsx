@@ -1,7 +1,8 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import { DivSideBar, DivSideTitle, DivSidePages } from "./styles";
+import { UlSideBar, LiSideTitle, LiSidePages, LiSideSubPages } from "./styles";
 import { SideBarData } from "./SideBarData";
+import { Link } from "react-router-dom";
 
 export default function SideBar({ active }) {
   function closeSideBar() {
@@ -9,29 +10,35 @@ export default function SideBar({ active }) {
   }
 
   return (
-    <DivSideBar>
-      <DivSideTitle>
+    <UlSideBar>
+      <LiSideTitle>
         <FaTimes onClick={closeSideBar} />
         <p className="col-start-3 col-end-6 ">
           Milan
           <br />
           Systems
         </p>
-      </DivSideTitle>
+      </LiSideTitle>
       <div>
         {SideBarData?.map((value, key) => {
           return (
-            <div>
-              <DivSidePages>
+            <div key={key}>
+              <LiSidePages>
                 <p>{value.title}</p>
-              </DivSidePages>
-              {value.subPages?.map((subpage, key) => {
-                return <p>{subpage.title}</p>;
-              })}
+              </LiSidePages>
+              <ul>
+                {value.subPages?.map((subpage, key) => {
+                  return (
+                    <LiSideSubPages key={key}>
+                      <Link to={subpage.path}>{subpage.title}</Link>
+                    </LiSideSubPages>
+                  );
+                })}
+              </ul>
             </div>
           );
         })}
       </div>
-    </DivSideBar>
+    </UlSideBar>
   );
 }
